@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO, format=FORMAT)
 OWNER_ID = 1985665341
 PREFIX = ["/","!","*","$","#","?",">",]
 
-mongo = pymongo.MongoClient("mongodb+srv://Otazuki_004:<password>@hydra.od82ic1.mongodb.net/?retryWrites=true&w=majority")
+mongo = pymongo.MongoClient("mongodb+srv://nandhaxd:rw5T7YJRjsE3fmk3@cluster0.80igexg.mongodb.net/?retryWrites=true&w=majority")
 db = mongo["Hydra1"]
 
 ND = Client("Hydra1",
