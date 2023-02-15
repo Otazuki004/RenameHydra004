@@ -1,0 +1,9 @@
+hachoir
+humanize
+pillow 
+pyrogram
+tgcrypto
+asyncio
+telegraph
+pymongo
+motor
