@@ -63,7 +63,7 @@ async def refund(_, message):
         media = file.media
         await reply.delete()
 
-        button = [[InlineKeyboardButton("📁 𝙳𝙾𝙲𝚄𝙼𝙴𝙽𝚃𝚂",callback_data = "upload:document")]]
+        button = [[InlineKeyboardButton("📁 File",callback_data = "upload:document")]]
         if str(media) in ["MessageMediaType.VIDEO", "MessageMediaType.DOCUMENT"]:
              button.append([InlineKeyboardButton("🎥 𝚅𝙸𝙳𝙴𝙾",callback_data = "upload:video")])
         elif str(media) == "MessageMediaType.AUDIO":
@@ -93,7 +93,7 @@ async def doc(bot,query):
 
      file_path = f"downloads/{new_filename}"
      file = query.message.reply_to_message
-     ms = await query.message.edit("𝚃𝚁𝚈𝙸𝙽𝙶 𝚃𝙾 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳...")
+     ms = await query.message.edit("Downloading...")
      c_time = time.time()
      try:
      	path = await ND.download_media(message = file, progress=progress_for_pyrogram,progress_args=( "𝚃𝚁𝚈𝙸𝙽𝙶 𝚃𝙾 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳....",  ms, c_time   ))
@@ -130,7 +130,7 @@ async def doc(bot,query):
          img = Image.open(ph_path)
          img.resize((320, 320))
          img.save(ph_path, "JPEG")
-     await ms.edit("𝚃𝚁𝚈𝙸𝙽𝙶 𝚃𝙾 𝚄𝙿𝙻𝙾𝙰𝙳𝙸𝙽𝙶....")
+     await ms.edit("Uploading....")
      c_time = time.time() 
      try:
         if type == "document":
@@ -140,7 +140,7 @@ async def doc(bot,query):
                     thumb=ph_path, 
                     caption=caption, 
                     progress=progress_for_pyrogram,
-                    progress_args=( "𝚃𝚁𝚈𝙸𝙽𝙶 𝚃𝙾 𝚄𝙿𝙻𝙾𝙰𝙳𝙸𝙽𝙶....",  ms, c_time   ))
+                    progress_args=( "Uploading....",  ms, c_time   ))
         elif type == "video": 
             await ND.send_video(
 		    query.message.chat.id,
@@ -149,7 +149,7 @@ async def doc(bot,query):
 		    thumb=ph_path,
 		    duration=duration,
 		    progress=progress_for_pyrogram,
-		    progress_args=( "𝚃𝚁𝚈𝙸𝙽𝙶 𝚃𝙾 𝚄𝙿𝙻𝙾𝙰𝙳𝙸𝙽𝙶....",  ms, c_time))
+		    progress_args=( "Uploading....",  ms, c_time))
         elif type == "audio": 
             await ND.send_audio(
 		    query.message.chat.id,
@@ -158,7 +158,7 @@ async def doc(bot,query):
 		    thumb=ph_path,
 		    duration=duration,
 		    progress=progress_for_pyrogram,
-		    progress_args=( "𝚃𝚁𝚈𝙸𝙽𝙶 𝚃𝙾 𝚄𝙿𝙻𝙾𝙰𝙳𝙸𝙽𝙶....",  ms, c_time   )) 
+		    progress_args=( "𝚄𝙿𝙻𝙾𝙰𝙳𝙸𝙽𝙶....",  ms, c_time   )) 
      except Exception as e: 
          await ms.edit(e) 
          os.remove(file_path)
