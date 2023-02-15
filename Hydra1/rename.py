@@ -46,7 +46,7 @@ async def cancel(bot,update):
 @ND.on_callback_query(filters.regex("rename"))
 async def cb_rename(_, query):
      await query.message.delete()
-     await query.message.reply_text("🗒️ Enter File name also enter with type (\".MKV\",\".MP4\",\".MP3\"):-",
+     await query.message.reply_text("🗒️ Enter File name",
         reply_to_message_id=query.message.reply_to_message.id, reply_markup=ForceReply(True))
 
 
@@ -65,9 +65,9 @@ async def refund(_, message):
 
         button = [[InlineKeyboardButton("📁 File",callback_data = "upload:document")]]
         if str(media) in ["MessageMediaType.VIDEO", "MessageMediaType.DOCUMENT"]:
-             button.append([InlineKeyboardButton("🎥 𝚅𝙸𝙳𝙴𝙾",callback_data = "upload:video")])
+             button.append([InlineKeyboardButton("🎥 Video",callback_data = "upload:video")])
         elif str(media) == "MessageMediaType.AUDIO":
-             button.append([InlineKeyboardButton("🎵 𝙰𝚄𝙳𝙸𝙾",callback_data = "upload:audio")])
+             button.append([InlineKeyboardButton("🎵 Audio",callback_data = "upload:audio")])
         await message.reply_text(
            f"**Select the output file type**\n**Output FileName**:- {new_name}",
            reply_to_message_id=file.id,
@@ -158,7 +158,7 @@ async def doc(bot,query):
 		    thumb=ph_path,
 		    duration=duration,
 		    progress=progress_for_pyrogram,
-		    progress_args=( "𝚄𝙿𝙻𝙾𝙰𝙳𝙸𝙽𝙶....",  ms, c_time   )) 
+		    progress_args=( "Uploading....",  ms, c_time   )) 
      except Exception as e: 
          await ms.edit(e) 
          os.remove(file_path)
